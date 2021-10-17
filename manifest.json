@@ -1,0 +1,26 @@
+{
+  "name": "IFC - Chat Alert",
+  "description": "A Chat alert to IFC",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "128": "get_started32.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "notifications", "scripting", "activeTab", "webRequest", "storage", "tabs"
+  ],
+  "action": {
+    "default_popup":"popup.html"
+  },
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["https://web.skype.com/*", "https://*.google.com/*"],
+      "all_frames": true,
+      "js": ["content-script.js"]
+    }
+  ]
+}
